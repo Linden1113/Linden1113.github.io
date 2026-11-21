@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linden · 大模型方向技术猎头</title>
+<meta name="description" content="Linden，大模型方向技术猎头：训推框架、预训练 / 后训练、多模态、Code / Agent、AI Infra 等方向的人才寻访。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm, precise, professional — a working recruiter's page
+   IDEA: a search board / talent map — Linden at the centre of the clients served and the teams searched
+   PICTURE: radial map: centre node, client ring, dashed outer ring of model teams & open-source communities
+   COLOUR and TYPE: white, black, signal red #e4002b, one grey; Archivo wide for numerals, Noto Sans SC for text
+   LAYOUT: strict left edge, big numerals row, thick top rules per section, label column on the left */
+:root{color-scheme:light dark;
+  --bg:light-dark(#ffffff,#0e0e0e);--ink:light-dark(#111111,#f2f2f2);
+  --grey:light-dark(#6b6b6b,#a3a3a3);--line:light-dark(#d9d9d9,#2c2c2c);
+  --red:#e4002b;--soft:light-dark(#f4f4f4,#171717)}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;overflow-x:clip}
+a{color:inherit;text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 max(5vw,16px)}
+.band{padding:clamp(28px,4.5vw,64px) 0}
+.num{font-family:"Archivo",sans-serif;font-variation-settings:"wdth" 112;font-weight:800}
+
+.top{border-top:8px solid var(--ink)}
+.nav{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center;justify-content:space-between;padding:14px 0;font-size:14px}
+.nav .links{display:flex;flex-wrap:wrap;gap:4px 18px}
+.nav .links a{text-decoration:none;color:var(--grey)}
+.nav .links a:hover{color:var(--ink)}
+
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(20px,4vw,56px);align-items:center;padding:clamp(18px,3vw,40px) 0 clamp(28px,4vw,56px)}
+h1{font-family:"Archivo",sans-serif;font-variation-settings:"wdth" 112;font-size:clamp(44px,6.4vw,72px);line-height:1.05;margin:0 0 14px;font-weight:800}
+.role{font-size:clamp(20px,2.4vw,26px);line-height:1.35;font-weight:700;margin:0 0 14px;text-wrap:balance}
+.role span{color:var(--red)}
+.lead{color:var(--grey);margin:0 0 22px;max-width:34em}
+.contact{display:grid;gap:8px;font-size:15px}
+.contact div{display:flex;gap:12px}
+.contact b{flex:none;width:4.5em;font-weight:500;color:var(--grey)}
+.fig{position:relative;aspect-ratio:1/0.86;width:100%}
+.fig svg{position:absolute;inset:0;width:100%;height:100%}
+.legend{margin:6px 0 0;font-size:13px;color:var(--grey);text-align:center}
+
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:3px solid var(--ink)}
+.stat{padding:18px 16px 18px 0;border-right:1px solid var(--line)}
+.stat:not(:first-child){padding-left:16px}
+.stat:last-child{border-right:0}
+.stat .num{font-size:clamp(34px,4.6vw,52px);line-height:1}
+.stat .num em{font-style:normal;color:var(--red)}
+.stat p{margin:8px 0 0;font-size:14px;color:var(--grey)}
+
+.sec{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:clamp(16px,3vw,48px);border-top:3px solid var(--ink);padding-top:18px}
+.sec h2{font-size:22px;line-height:1.3;margin:0;font-weight:900}
+.sec h2 small{display:block;font-size:14px;font-weight:400;color:var(--grey);margin-top:6px}
+.job{padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid var(--line)}
+.job:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.job-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;align-items:baseline}
+.job h3{font-size:19px;margin:0;font-weight:700}
+.job .when{font-size:14px;color:var(--grey);white-space:nowrap}
+.job .sub{color:var(--grey);font-size:15px;margin:4px 0 12px}
+.tag{display:inline-block;font-size:13px;padding:1px 8px;border:1px solid var(--red);color:var(--red);border-radius:2px;margin-right:6px;vertical-align:2px}
+ul{margin:0;padding-left:1.1em}
+li{margin:0 0 8px;max-width:46em}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chips span{font-size:13px;background:var(--soft);padding:3px 10px;border-radius:2px}
+
+.steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 32px}
+.step{display:grid;grid-template-columns:56px minmax(0,1fr);gap:12px}
+.step .num{font-size:40px;line-height:1;color:var(--red)}
+.step h4{margin:2px 0 4px;font-size:17px}
+.step p{margin:0;color:var(--grey);font-size:15px}
+
+footer{border-top:8px solid var(--ink);margin-top:clamp(28px,4vw,56px);padding:22px 0 40px;font-size:14px;color:var(--grey);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+
+@media(max-width:860px){.hero{grid-template-columns:minmax(0,1fr)}.sec{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat:nth-child(2){border-right:0}.stat:nth-child(3){padding-left:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}.steps{grid-template-columns:minmax(0,1fr)}.contact b{width:4em}}
+@media(prefers-reduced-motion:no-preference){.ring line{stroke-dasharray:400;stroke-dashoffset:400;animation:draw 1.4s ease-out forwards}@keyframes draw{to{stroke-dashoffset:0}}}
+</style>
+</head>
+<body>
+<div class="top">
+<div class="wrap">
+  <nav class="nav">
+    <b>Linden</b>
+    <div class="links"><a href="#focus">最近聚焦</a><a href="#work">在招方向</a><a href="#method">我能做什么</a><a href="#contact">联系</a></div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <h1>Linden</h1>
+      <p class="role">大模型方向<span>技术猎头</span>，<br>懂技术的人才寻访</p>
+      <p class="lead">专注大模型技术岗寻访，服务 DeepSeek、MiniMax、阶跃星辰、字节跳动等 9 家客户。人工智能专业背景，能读懂训推框架、RL、多模态、Agent 的 JD，和工程师、研究员聊到具体做的是哪一块。</p>
+      <div class="contact">
+        <div><b>邮箱</b><a href="mailto:liuxiaozhu20@gmail.com">liuxiaozhu20@gmail.com</a></div>
+        <div><b>微信</b><span>NISHUIXIAOZHU1113</span></div>
+        <div><b>GitHub</b><a href="https://github.com/Linden1113">github.com/Linden1113</a></div>
+      </div>
+    </div>
+    <div>
+      <div class="fig" aria-label="人才地图：中心是 Linden，内圈是合作的公司，外圈是长期关注的团队与社区">
+        <svg id="map" viewBox="0 0 560 480" role="img"></svg>
+      </div>
+      <p class="legend">实线框：合作的公司　·　虚线圈：长期关注的模型团队与开源社区</p>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><div class="num">9</div><p>家大模型与科技公司</p></div>
+    <div class="stat"><div class="num">220<em>+</em></div><p>个在招技术岗位</p></div>
+    <div class="stat"><div class="num">3,000<em>+</em></div><p>位工程师与研究员的人才地图</p></div>
+    <div class="stat"><div class="num">5</div><p>个城市：北京 / 上海 / 杭州 / 深圳 / 香港</p></div>
+  </section>
+
+  <section class="band" id="focus">
+    <div class="sec">
+      <h2>最近聚焦<small>正在重点寻访的岗位</small></h2>
+      <div class="job">
+        <div class="job-head"><h3><span class="tag">高优</span>MiniMax 10x Team 研究员</h3></div>
+        <p class="sub">北京 / 上海 / 香港（另有旧金山、伦敦）· 全职研究员，也有面向教授和资深从业者的 Fellowship</p>
+        <ul>
+          <li><b>在找什么样的人：</b>经济学、金融、生命科学、法律、网络安全等领域的专家，并且已经把大模型深度用进自己的研究或工作流程，能独立把一个课题从构想推进到交付。</li>
+          <li><b>我能帮你：</b>介绍团队在做的方向和工作方式，帮你梳理代表作，准备申请材料（CV、1–2 篇代表作或项目说明、一段 200–400 字的研究设想）。</li>
+          <li><b>如果这说的是你，或者你身边有这样的人</b>，欢迎发邮件或加微信聊聊。</li>
+        </ul>
+        <div class="chips"><span>AI × 经济</span><span>AI × 金融 / 量化</span><span>AI × 生命科学</span><span>AI × 法律</span><span>AI × 网络安全</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="work" style="padding-top:0">
+    <div class="sec">
+      <h2>在招方向<small>我目前对接的岗位</small></h2>
+      <div>
+        <div class="job">
+          <div class="job-head"><h3><span class="tag">重点</span>DeepSeek</h3></div>
+          <p class="sub">北京为主，部分岗位可在杭州 · 工程与研究岗共 39 个</p>
+          <ul>
+            <li><b>工程方向：</b>大模型训练 / 推理框架、Agent 弹性计算（Agent 沙箱与弹性计算平台）、服务端与 Agent Harness、高性能算子 / 通信 / 编译器、高性能分布式存储、超算集群、预训练数据工程（数据基建、语料处理、数据采集、多模态数据）、前端 / 客户端等。</li>
+            <li><b>研究方向：</b>预训练算法、预训练数据、后训练、多模态理解等研究员岗位。</li>
+            <li><b>岗位看重的能力：</b>扎实的系统和工程功底，能深入框架与底层定位性能、稳定性问题；在 vLLM、SGLang、verl、Megatron 等开源项目或一线模型团队有实际产出；研究岗看重独立的研究能力，以及能进入正式模型的成果。</li>
+          </ul>
+        </div>
+        <div class="job">
+          <div class="job-head"><h3>其他大模型团队</h3></div>
+          <p class="sub">MiniMax、阶跃星辰（北京 / 上海）· 字节跳动、小红书 · 九坤·至知研究院（北京）· 记忆张量（上海）· 深信服（深圳）· 聚宽</p>
+          <ul>
+            <li><b>算法与研究：</b>预训练、后训练与 RL、多模态理解与生成、Code / Agent、具身智能、大模型评测等。</li>
+            <li><b>工程与 Infra：</b>训练与推理系统、RL 框架、高性能网络与存储、大模型网关与开放平台、数据平台、chatbot 客户端与前端等。</li>
+            <li><b>岗位看重的能力：</b>在相关方向有扎实积累和可以展示的成果（项目、论文或开源贡献），并且对大模型有自己的判断。不同团队、不同级别的要求差别较大，欢迎直接聊具体情况。</li>
+          </ul>
+          <div class="chips"><span>预训练 / 后训练</span><span>多模态</span><span>Code / Agent</span><span>具身智能</span><span>AI Infra</span><span>数据平台</span><span>前端 / 客户端</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="method" style="padding-top:0">
+    <div class="sec">
+      <h2>我能为你做什么<small>不管你现在是否在看机会</small></h2>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><div><h4>讲清岗位在做什么</h4><p>技术背景出身，能把 JD 翻译成具体的工作内容、团队方向和技术栈，帮你判断是不是真的对口。</p></div></div>
+        <div class="step"><div class="num">2</div><div><h4>帮你比较不同团队</h4><p>同一个方向在不同公司的定位、节奏和成长空间不一样，我会把各家的情况摆在一起说清楚。</p></div></div>
+        <div class="step"><div class="num">3</div><div><h4>准备与跟进面试</h4><p>帮你梳理简历和项目亮点，了解流程和面试重点，全程跟进每一轮的反馈。</p></div></div>
+        <div class="step"><div class="num">4</div><div><h4>严格保密</h4><p>你的信息只在你同意后才会推荐给具体团队，不看机会也可以先认识，以后需要时随时找我。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<div class="wrap">
+  <footer id="contact">
+    <span>Linden · 大模型方向技术猎头</span>
+    <span>liuxiaozhu20@gmail.com · 微信 NISHUIXIAOZHU1113 · <a href="https://github.com/Linden1113">GitHub</a></span>
+  </footer>
+</div>
+
+<script>
+{
+  const svg = document.getElementById('map');
+  const cx = 280, cy = 240;
+  const inner = ['DeepSeek','MiniMax','阶跃星辰','字节跳动','小红书','九坤','深信服','记忆张量'];
+  const outer = ['vLLM','SGLang','verl','Kimi','Qwen','Seed','LongCat','Keye','Mooncake','Higress','new-api','RAGFlow','rtp-llm','AReaL'];
+  const pos = (n, i, r, off) => { const a = off + i * 2 * Math.PI / n; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; };
+  const ip = inner.map((_, i) => pos(inner.length, i, 128, -Math.PI / 2));
+  const op = outer.map((_, i) => pos(outer.length, i, 212, -Math.PI / 2 + 0.22));
+  let lines = '', dots = '';
+  op.forEach((p, i) => {
+    const anchor = p[0] > cx + 20 ? 'start' : p[0] < cx - 20 ? 'end' : 'middle';
+    const dx = anchor === 'start' ? 9 : anchor === 'end' ? -9 : 0;
+    const dy = anchor === 'middle' ? (p[1] < cy ? -10 : 20) : 5;
+    dots += `<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="var(--grey)"/><text x="${p[0]+dx}" y="${p[1]+dy}" text-anchor="${anchor}" font-size="14" fill="var(--grey)">${outer[i]}</text>`;
+  });
+  ip.forEach((p, i) => {
+    lines += `<line x1="${cx}" y1="${cy}" x2="${p[0]}" y2="${p[1]}" stroke="var(--ink)" stroke-width="1.6"/>`;
+    const w = inner[i].length * 15 + 22;
+    dots += `<rect x="${p[0]-w/2}" y="${p[1]-15}" width="${w}" height="30" rx="2" fill="var(--bg)" stroke="var(--ink)" stroke-width="1.6"/><text x="${p[0]}" y="${p[1]+5}" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">${inner[i]}</text>`;
+  });
+  svg.innerHTML = `<circle cx="${cx}" cy="${cy}" r="212" fill="none" stroke="var(--line)" stroke-width="1.2" stroke-dasharray="3 5"/><g class="ring">${lines}</g>${dots}
+    <circle cx="${cx}" cy="${cy}" r="44" fill="var(--red)"/>
+    <text x="${cx}" y="${cy-2}" text-anchor="middle" font-size="17" font-weight="900" fill="#fff">Linden</text>
+    <text x="${cx}" y="${cy+18}" text-anchor="middle" font-size="12" fill="#fff">技术猎头</text>`;
+}
+</script>
+</body>
+</html>
